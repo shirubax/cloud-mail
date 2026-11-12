@@ -1079,11 +1079,11 @@ const emailService = {
 					const result = await forwardMime.send(c.env.forward, params, address);
 					if (result?.error) {
 						console.error(`转发邮箱 ${address} 失败：`, result.error);
-						console.error("送信失敗原因:", err.message, err);
-					}
+ 						console.error("送信失敗原因:", result.error?.message || JSON.stringify(result.error));
+						}
 				} catch (e) {
 					console.error(`转发邮箱 ${address} 失败：`, e);
-					console.error("送信失敗原因:", err.message, err);
+					console.error("送信失敗原因:", e?.message || String(e));
 				}
 
 			}));
